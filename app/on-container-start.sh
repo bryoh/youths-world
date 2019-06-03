@@ -13,7 +13,9 @@
 # Create migrations based on django models
 
 echo "==============================================================="
-#cd app
+ls
+echo "==============================================================="
+cd app
 python manage.py makemigrations
 
 echo "==================Migrate created migrations to database============================================="
