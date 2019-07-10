@@ -1,6 +1,6 @@
 from .base import *
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*youths-world.herokuapp.com']
 
 DEBUG = False
 
