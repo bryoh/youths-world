@@ -1,4 +1,3 @@
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
@@ -19,7 +18,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -34,12 +32,9 @@ INSTALLED_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.settings',
     'wagtail.api.v2',
-
-
     'modelcluster',
     'taggit',
     'rest_framework',
-
     'longclaw.core',
     'longclaw.configuration',
     'longclaw.shipping',
@@ -48,11 +43,9 @@ INSTALLED_APPS = [
     'longclaw.checkout',
     'longclaw.basket',
     'longclaw.stats',
-
     'home',
     'search',
-    'catalog'
-
+    'catalog',
 ]
 
 MIDDLEWARE = [
@@ -63,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
@@ -73,9 +65,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(PROJECT_DIR, 'templates'),
-        ],
+        'DIRS': [os.path.join(PROJECT_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,9 +74,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'longclaw.configuration.context_processors.currency',
-            ],
+            ]
         },
-    },
+    }
 ]
 
 WSGI_APPLICATION = 'app.wsgi.application'
@@ -96,9 +86,14 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    "default": {
+        'CONN_MAX_AGE': 0,
+        "ENGINE": os.environ.get("DBENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("DBNAME", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("DBUSER", "user"),
+        "PASSWORD": os.environ.get("DBPASS", "password"),
+        "HOST": os.environ.get("DBHOST", "localhost"),
+        "PORT": os.environ.get("DBPORT", "5432"),
     }
 }
 
@@ -120,14 +115,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
+STATICFILES_FINDERS = ['django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder']
 
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'static'),
-]
+STATICFILES_DIRS = [os.path.join(PROJECT_DIR, 'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
@@ -137,16 +127,17 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "app"
+WAGTAIL_SITE_NAME = "Youths World"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'http://localhost'
 
 # Longclaw settings
 
 # The payment gateway to use. `BasePayment` is a dummy payment gateway for testing.
 # Longclaw also offers 'BraintreePayment', 'PaypalVZeroPayment' and 'StripePayment'
-PAYMENT_GATEWAY = 'longclaw.checkout.gateways.BasePayment'
+PAYMENT_GATEWAY = 'longclaw.checkout.gateways.stripe.StripePayment'
 
 PRODUCT_VARIANT_MODEL = 'catalog.ProductVariant'
+STRIPE_SECRET = os.environ.get('STRIPE_SECRET', '')
