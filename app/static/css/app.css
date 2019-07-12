@@ -22,8 +22,15 @@ body {
 
 .header {
     grid-area: header;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     padding: 5px;
     background-color: var(--brand-primary)
+}
+
+.header-brand {
+    flex: 1;
 }
 
 .main {
