@@ -127,8 +127,6 @@
 /app/static/core/js/longclawclient.bundle.js
 /app/static/core/js/orders.bundle.js
 /app/static/core/js/vendors.bundle.js
-/app/static/css/app.css
-/app/static/js/app.js
 /app/static/rest_framework/css/bootstrap-theme.min.css
 /app/static/rest_framework/css/bootstrap-tweaks.css
 /app/static/rest_framework/css/bootstrap.min.css
