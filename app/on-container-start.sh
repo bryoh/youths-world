@@ -28,13 +28,13 @@ python manage.py migrate
 #python manage.py flush --no-input
 #python manage.py migrate
 echo "==================Collect Static ============================================="
-python manage.py collectstatic --no-input --clear
+#python manage.py collectstatic --no-input 
 
-#python manage.py runserver
+python manage.py runserver
 # echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'pass')" | python manage.py shell
 
 echo "==============================================================="
-gunicorn --reload app.wsgi 
+#gunicorn app.wsgi 
 #useradd wagtail
 #chown -R wagtail /code
 
