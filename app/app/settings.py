@@ -30,6 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'changemeplease')
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'youths-world.herokuapp.com']
+EMAIL_SUBJECT_PREFIX = '[Bikers World Automobiles] '
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
