@@ -296,3 +296,4 @@
 /app/static/wagtailsnippets/js/snippet-multiple-select.js
 /app/static/wagtailusers/css/groups_edit.css
 /app/static/wagtailusers/js/group-form.js
+*.sqlite3
