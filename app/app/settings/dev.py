@@ -6,6 +6,12 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 print('----------------------------------------------------------------------------------------------------------------------------- DEBUG')
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+STATICFILES_FINDERS = ['django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder']
+STATICFILES_DIRS = [os.path.join(PROJECT_DIR, 'static')]
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 STATIC_URL = '/static/'
