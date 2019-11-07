@@ -1,0 +1,56 @@
+{
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+
+  ],
+  "description": "dev environments for testing pull requests",
+  "env": {
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "AWS_STORAGE_BUCKET_NAME": {
+      "required": true
+    },
+    "DBENGINE": {
+      "required": true
+    },
+    "DBHOST": {
+      "required": true
+    },
+    "DBNAME": {
+      "required": true
+    },
+    "DBPASS": {
+      "required": true
+    },
+    "DBPORT": {
+      "required": true
+    },
+    "DBUSER": {
+      "required": true
+    },
+    "DEBUG": {
+      "required": true
+    },
+    "DISABLE_COLLECTSTATIC": {
+      "required": true
+    },
+    "DJANGO_SETTINGS_MODULE": {
+      "required": true
+    },
+    "SECRET_KEY": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "name": "youths-world",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
