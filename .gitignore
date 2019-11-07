@@ -1,3 +1,4 @@
 *.pyc
 *.sqlite3
 /app/app/whoosh_index/_MAIN_0.toc
+.idea/*
