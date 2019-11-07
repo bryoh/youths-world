@@ -62,7 +62,7 @@ echo ""
 echo ""
 echo ""
 echo ""
-python manage.py runserver
-#gunicorn --reload app.wsgi
+#python manage.py runserver
+gunicorn --reload app.wsgi
 
 exec "$@"
