@@ -12,30 +12,55 @@
 #fi
 # Create migrations based on django models
 
-echo "==============================================================="
-ls
-echo "==============================================================="
+echo "============================================================== cd into app"
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
 cd app
+ls -alt
+echo "============================================================== Create migrations based on django models"
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
 python manage.py makemigrations
 
-echo "==================Migrate created migrations to database============================================="
-# Migrate created migrations to database
+echo "============================================================== Migrate created migrations to database"
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
 python manage.py migrate
 
-# Start gunicorn server at port 8000 and keep an eye for app code changes
-# If changes occur, kill worker and start a new one
+#echo "============================================================== Collect Static "
+#echo ""
+#echo ""
+#echo ""
+#echo ""
+#echo ""
+#python manage.py collectstatic --no-input --clear
 
-#python manage.py flush --no-input
-#python manage.py migrate
-echo "==================Collect Static ============================================="
-#python manage.py collectstatic --no-input 
 
-#python manage.py runserver
-# echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'pass')" | python manage.py shell
+if [ "$DEBUG" == True ]; then
+    echo "============================================================== create superuser "
+    echo ""
+    echo ""
+    echo ""
+    echo ""
+    echo ""
+    echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('waka', 'admin@myproject.com', '1pass')" | python manage.py shell
+fi
 
-echo "==============================================================="
-gunicorn app.wsgi 
-#useradd wagtail
-#chown -R wagtail /code
+echo "============================================================== Start the server"
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+gunicorn --reload app.wsgi
 
 exec "$@"
