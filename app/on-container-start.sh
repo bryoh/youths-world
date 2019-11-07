@@ -52,7 +52,8 @@ if [ "$DEBUG" == True ]; then
     echo ""
     echo ""
     echo ""
-    echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('waka', 'admin@myproject.com', '1pass')" | python manage.py shell
+    echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'pass')" | python manage.py shell
+
 fi
 
 echo "============================================================== Start the server"
@@ -61,6 +62,7 @@ echo ""
 echo ""
 echo ""
 echo ""
-gunicorn --reload app.wsgi
+python manage.py runserver
+#gunicorn --reload app.wsgi
 
 exec "$@"
