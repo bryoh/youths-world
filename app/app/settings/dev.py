@@ -4,7 +4,6 @@ DEBUG = True
 
 # SECURITY WARNING: define the correct hosts in production!
 ALLOWED_HOSTS = ['*']
-print('----------------------------------------------------------------------------------------------------------------------------- DEBUG')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -33,6 +32,11 @@ else:
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
     STATIC_URL = '/static/'
     MEDIA_URL = '/media/'
+
+INSTALLED_APPS = INSTALLED_APPS + ['debug_toolbar']
+MIDDLEWARE = MIDDLEWARE + ['debug_toolbar.middleware.DebugToolbarMiddleware']
+
+# INTERNAL_IPS = ("127.0.0.1", "172.17.0.1")
 
 try:
     from .local import *
